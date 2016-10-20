@@ -1,8 +1,10 @@
 class CreateCarts < ActiveRecord::Migration
   def change
-    t.integer :user_id
-    t.string  :status, default: 'not submitted'
+    create_table :carts do |t|
+      t.integer :user_id
+      t.string  :status, default: 'not submitted'
 
-    t.timestamps null: false
+      t.timestamps null: false
+    end
   end
 end

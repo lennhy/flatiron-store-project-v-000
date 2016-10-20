@@ -1,10 +1,12 @@
 class CreateItems < ActiveRecord::Migration
   def change
-    t.string :title
-    t.integer :inventory
-    t.integer :price
-    t.integer :category_id
+    create_table :items do |t|
+      t.string :title
+      t.integer :inventory
+      t.integer :price
+      t.integer :category_id
 
-    timestamps null: false
+      t.timestamps null: false
+    end
   end
 end
