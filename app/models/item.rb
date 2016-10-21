@@ -15,4 +15,9 @@ class Item < ActiveRecord::Base
     items
   end
 
+  def subtract_from_inventory
+    # current_cart -
+    # self.inventory
+  end
+
 end

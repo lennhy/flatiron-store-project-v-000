@@ -1,19 +1,23 @@
 class CartsController < ApplicationController
-  before_filer :authenticate_user!, except: [ :index, :show ]
 
+  def index
+  end
 
   # get request to see cart
   def show
+    @cart = Cart.find(params[:id])
+    session[:cart_id] = @cart.id
+  end
 
+  def checkout
+    @cart = Cart.find(params[:id])
+    session[:cart_id] = @cart.id
+    @cart.subtract_from_inventory
   end
   # post request to add to Cart
   def create
 
   end
 
-# def set_cart
-#   if Cart.nil?
-#     Cart.find_or_initialize_by(:user_id=> )
-#   end
-# end
+
 end
