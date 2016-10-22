@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_cart
 
   def current_cart
-    @cart = Cart.find(params[:id])
     session[:cart_id] = @cart.id
   end
 
