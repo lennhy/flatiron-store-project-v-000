@@ -5,4 +5,7 @@
           <li> <%= link_to "Cart", cart_path(current_cart) %></li>
         <% end %>
     </ul>
+    <% if current_cart %>
+      <a href="/carts/1">Cart</a>
+    <% end %>
 </nav>
