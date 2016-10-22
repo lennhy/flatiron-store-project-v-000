@@ -49,6 +49,11 @@ class Cart < ActiveRecord::Base
 
       end
   end
+
+  def checkout
+    # current_user.id = @cart.user_id
+    current_user.current_cart = nil
+  end
   # def total_inventory_of_items
   #   total_item_inventory = 0
   #   self.items.each do |item|
