@@ -7,6 +7,8 @@ end
 
   def show
     @cart = Cart.find(params[:id])
+    @cart.checkout
+
   end
 
   def checkout

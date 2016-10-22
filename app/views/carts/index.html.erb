@@ -1,6 +1,0 @@
-<% @cart.line_items.each do |line_item| %>
-  <p><%= link_to line_item.item.title, item_path(line_item.item) %>
-<% end %>
-
-
-<%= button_to 'Checkout', checkout_path(@cart) %>
