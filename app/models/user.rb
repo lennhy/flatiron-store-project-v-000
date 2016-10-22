@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :rememberable, :validatable
 
-  
+
+ def remove_cart
+   self.current_cart_id = nil
+   save
+ end
 
 end

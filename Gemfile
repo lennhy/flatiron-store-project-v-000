@@ -8,7 +8,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'rspec-core', '~> 3.4.0'
+gem 'rspec-core', '>= 3.4.0'
 
 group :test, :development do
   gem "rspec-rails"

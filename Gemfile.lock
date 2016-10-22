@@ -268,7 +268,7 @@ DEPENDENCIES
   pry
   rack_session_access
   rails (= 4.2)
-  rspec-core (~> 3.4.0)
+  rspec-core (>= 3.4.0)
   rspec-rails
   sass-rails (= 4.0.2)
   sdoc (~> 0.4.0)

@@ -36,9 +36,12 @@ class Cart < ActiveRecord::Base
   end
 
 
-  def change_status
-    self.status == "submitted"
-  end
+   def checkout
+     self.update(:status=>"submitted")
+     
+     subtract_from_inventory
+
+   end
 
   def subtract_from_inventory
     if self.status = "submitted"
@@ -50,24 +53,12 @@ class Cart < ActiveRecord::Base
       end
   end
 
-  def checkout
-    # current_user.id = @cart.user_id
-    current_user.current_cart = nil
-  end
-  # def total_inventory_of_items
-  #   total_item_inventory = 0
-  #   self.items.each do |item|
-  #     total_item_inventory += item.inventory
-  #   end
-  #   total_item_inventory # --get total inventory of items from cart
-  # end
-  #
-  # def subtract_from_inventory
-  #   binding.pry
-  #
-  #   remaining_items = total_inventory_of_items - total_quantity_of_line_items # --subtract them
-  #   self.items.update(:inventory=> remaining_items) # --update the cart's item inventory
-  #
+  # def checkout
+  #   change_status
+  #   subtract_from_inventory
+  #   current_user.id = @cart.user_id
+  #   current_user.current_cart = nil
+  #   current_user.current_cart.save
   # end
 
 end
