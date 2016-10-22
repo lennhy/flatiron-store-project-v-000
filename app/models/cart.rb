@@ -26,4 +26,43 @@ class Cart < ActiveRecord::Base
     line_item
 
   end
+
+  def total_quantity_of_line_items
+    total_line_items = 0
+    self.line_items.each do |line_item|
+      total_line_items += line_item.quantity
+    end
+    total_line_items  # --get total quantity of line items from cart
+  end
+
+
+  def change_status
+    self.status == "submitted"
+  end
+
+  def subtract_from_inventory
+    if self.status = "submitted"
+        self.line_items.each do |line_item|
+          line_item.item.inventory -= line_item.quantity
+          line_item.item.save
+        end
+
+      end
+  end
+  # def total_inventory_of_items
+  #   total_item_inventory = 0
+  #   self.items.each do |item|
+  #     total_item_inventory += item.inventory
+  #   end
+  #   total_item_inventory # --get total inventory of items from cart
+  # end
+  #
+  # def subtract_from_inventory
+  #   binding.pry
+  #
+  #   remaining_items = total_inventory_of_items - total_quantity_of_line_items # --subtract them
+  #   self.items.update(:inventory=> remaining_items) # --update the cart's item inventory
+  #
+  # end
+
 end

@@ -15,9 +15,20 @@ class Item < ActiveRecord::Base
     items
   end
 
-  def subtract_from_inventory
-    # current_cart -
-    # self.inventory
+  def subtract_from_inventory(value)
+    # binding.pry
+    total_inventory = 0
+    self.all.map do |item|
+      total_inventory += item.inventory
+    end
+    total_inventory
+
+    # line_items_total = @cart.line_items.quantity
+    #
+    new_inventory_total = total_inventory - value
+    self.update(:inventory=>new_inventory_total)
+    # self.update(inventory: value)
+    self.status == "submitted"
   end
 
 end

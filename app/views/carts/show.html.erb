@@ -5,15 +5,7 @@
 <% end %>
 
 <% @cart.line_items.each do |line_item| %>
-  <p><%= link_to line_item.item.title, item_path(line_item.item) %> | <%= number_to_currency(line_item.item.price) %> | Quantity: <%= line_item.quantity %> | <% if line_item.item.inventory < 5 %>
-    <strong>There are only <%= line_item.item.inventory %> left in stock.</strong>
+  <p><%= link_to line_item.item.title, item_path(line_item.item) %>
   <% end %> </p>
-<% end %>
 
-<p>Order total: <strong><%= number_to_currency(@cart.total) %></strong> </p>
-
-  <form action ='/cart/#{@cart.id}/checkout' method ="post">
-    <% if @cart.status == 'not submitted' %>
-      <%= button_to 'Checkout', checkout_path %>
-    <% end %>
-  </form>
+<%= button_to 'Checkout', checkout_path %>
