@@ -6,8 +6,7 @@ class User < ActiveRecord::Base
 
 
  def remove_cart
-   self.current_cart_id = nil
-   save
+   self.update(:current_cart=> nil)
  end
 
 end

@@ -24,20 +24,22 @@ class Cart < ActiveRecord::Base
 
     end
 
-  def change_status
-    self.update(:status=>"submitted")
-  end
-
-   def update_items
-     line_items.each do |line_item|
-       line_item.item.inventory -= line_item.quantity
-       line_item.item.save
+    def change_status
+      self.update(:status=>"submitted")
     end
-   end
+
+    def update_items
+      line_items.each do |line_item|
+        line_item.item.inventory -= line_item.quantity
+        line_item.item.save
+      end
+    end
+
 
    def checkout
      update_items
-    change_status
+     change_status
+     self.user.remove_cart
    end
 
  end

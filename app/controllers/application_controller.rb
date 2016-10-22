@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_cart
 
   def current_cart
-    session[:cart_id] = @cart.id
+    session[:cart_id]  ||= Cart.find_by(id: params[:id])
   end
 
 end
